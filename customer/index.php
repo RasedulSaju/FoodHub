@@ -8,7 +8,7 @@ session_start();
 			<html lang="en">
 			<head>
 				<meta charset="UTF-8">
-				<title>Customer History | FoodHub</title>
+				<title>Customer Dashboard | FoodHub</title>
 				<link rel="stylesheet" href="../css/style.css">
 			</head>
 			<body>
@@ -16,25 +16,24 @@ session_start();
 					include '../config.php';
 				?>
 				<center>
-				<h3>FoodHub Customer History</h3>
+				<h3>FoodHub Customer Dashboard</h3>
 				<br>
 				<ul>
-					<li><a href="../login">Home</a></li>
-					<li><a class="active" href="history">History</a></li>
+					<li><a class="active" href="../login">Home</a></li>
+					<li><a href="history">History</a></li>
 					<li><a href="restaurants">Restaurants</a></li>
 					<li style="float:right"><a href="../logout.php">Log Out</a></li>
 				</ul>
 				<br>
-				 <table style="width:100%">
+				
+				<table style="width:100%">
                     <thead>
                         <tr>
-                            <th>Serial</th>
-                            <!--<th>User ID</th>-->
-                            <th>Order Type</th> 
-                            <th>Order Placed</th> 
-                            <th>Status</th>
-                            <!--<th>Item ID</th>-->
-                            <th>Restaurant Name</th>
+                            <th>User Name</th>
+                            <th>Email</th> 
+                            <th>Phone</th> 
+                            <th>Address</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +42,7 @@ session_start();
                             $dbcon = new PDO("mysql:host=$dbserver:$dbport;dbname=$db;","$dbuser","$dbpass");
                             $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                            $sqlquery="SELECT * FROM orders WHERE user_id='$var1'";
+                            $sqlquery="SELECT * FROM usertable WHERE user_id='$var1'";
 
                             try{
                                 $returnval=$dbcon->query($sqlquery); ///PDO Statement
@@ -55,13 +54,11 @@ session_start();
                     ?>
 
                                 <tr>
-                                    <td><?php echo $row['order_id'] ?></td>
-                                    <!--<td>< ? php echo $row['user_id'] ? ></td>-->
-                                    <td><?php echo $row['order_type'] ?></td>
-                                    <td><?php echo $row['order_placed'] ?></td>
-                                    <td><?php echo $row['order_status'] ?></td>
-                                    <!--<td>< ? php echo $row['item_id'] ? ></td>-->
-                                    <td><?php echo $row['restaurant_name'] ?></td>
+                                    <td><?php echo $row['username'] ?></td>
+                                    <td><a href="mailto:<?php echo $row['user_email'] ?>"><?php echo $row['user_email'] ?></a></td>
+                                    <td><a href="tel:<?php echo $row['user_phone'] ?>"><?php echo $row['user_phone'] ?></a></td>
+                                    <td><?php echo $row['user_address'] ?></td>
+									<td><a href="edituser.php?id=<?php echo $row['user_id'] ?>">Edit</a>
                                 </tr>
 
                                 <?php

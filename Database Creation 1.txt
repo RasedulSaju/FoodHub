@@ -1,0 +1,58 @@
+CREATE TABLE usertable(
+    user_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username varchar(50) NOT NULL UNIQUE,
+    user_email varchar(100) NOT NULL UNIQUE,
+    user_phone varchar(16),
+    user_password varchar(32) NOT NULL,
+    user_type varchar(10) NOT NULL,
+    user_address varchar(50) NOT NULL
+)
+
+
+CREATE TABLE items(
+    item_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    item_name varchar(26) NOT NULL,
+    item_price float(7) NOT NULL,
+    item_rating float(3) DEFAULT '0.0'
+)
+
+
+CREATE TABLE orders(
+    order_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id int(11) NOT NULL,
+    order_type varchar(15) NOT NULL,
+    order_placed datetime DEFAULT current_timestamp(),
+    order_status varchar(10) DEFAULT 'pending',
+    item_id int(11) NOT NULL,
+    restaurant_name varchar(26)
+)
+
+
+CREATE TABLE restaurants(
+    restaurant_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    restaurant_name varchar(26) NOT NULL,
+    restaurant_rating float(3) DEFAULT '0.0',
+    restaurant_address varchar(50),
+    restaurant_logo varchar(20) DEFAULT 'default.jpg',
+    restaurant_contact varchar(15),
+    restaurant_bg varchar(20)
+)
+
+
+CREATE TABLE promotional(
+    promo_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    restaurant_id int(11),
+    discount float(3) DEFAULT '0.0'
+
+    CONSTRAINT FOREIGN KEY pfk (restaurant_id) REFERENCES restaurants(restaurant_id)
+)
+
+
+INSERT INTO usertable (user_id, username, user_email, user_phone, user_password, user_type, user_address) VALUES (NULL, 'rasedul', 'rislam181007@bscse.uiu.ac.bd', '+8801735737037', '1234', 'admin', 'Motijheel'), (NULL, 'abir', 'a@a.co', '+88017533', '1234', 'customer', 'Khilgaon');
+
+INSERT INTO `restaurants` (`restaurant_id`, `restaurant_name`, `restaurant_rating`, `restaurant_address`, `restaurant_logo`) VALUES (NULL, 'EpicFC', '5.0', 'Jira', 'default.jpg', NULL), (NULL, 'SAD Food Court', '1.5', 'White House, Vatara', 'default.jpg', NULL), (NULL, 'KFC', '4.5', 'Chefs Table', 'default.jpg', NULL), (NULL, 'Pizza Hut', '4.8', 'Wari', 'default.jpg', NULL);
+
+
+INSERT INTO `promotional` (`promo_id`, `restaurant_id`) VALUES (NULL, '1'), (NULL, '2');
+
+INSERT INTO `items` (`item_id`, `item_name`, `item_price`, `item_rating`) VALUES (NULL, 'Burger', '1999', '1.2'), (NULL, 'Pizza', '2500', '1.5');
