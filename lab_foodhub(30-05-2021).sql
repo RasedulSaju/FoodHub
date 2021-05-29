@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 28, 2021 at 03:29 PM
+-- Generation Time: May 29, 2021 at 07:54 PM
 -- Server version: 8.0.23
 -- PHP Version: 8.0.3
 
@@ -31,16 +31,18 @@ CREATE TABLE `items` (
   `item_id` int NOT NULL,
   `item_name` varchar(26) NOT NULL,
   `item_price` float NOT NULL,
-  `item_rating` float DEFAULT '0'
+  `item_rating` float DEFAULT '0',
+  `restaurant_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`item_id`, `item_name`, `item_price`, `item_rating`) VALUES
-(1, 'Burger', 1999, 1.2),
-(2, 'Pizza', 2500, 1.5);
+INSERT INTO `items` (`item_id`, `item_name`, `item_price`, `item_rating`, `restaurant_id`) VALUES
+(1, 'Burger', 2000, 1.2, 3),
+(2, 'Pizza', 2500, 1.5, 3),
+(3, 'Pasta', 500, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -101,9 +103,9 @@ CREATE TABLE `restaurants` (
   `restaurant_name` varchar(26) NOT NULL,
   `restaurant_rating` float DEFAULT '0',
   `restaurant_address` varchar(50) DEFAULT NULL,
-  `restaurant_logo` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'default.jpg',
+  `restaurant_logo` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '../restaurants/default.jpg',
   `restaurant_contact` varchar(15) DEFAULT NULL,
-  `restaurant_bg` varchar(20) DEFAULT NULL
+  `restaurant_bg` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -111,10 +113,13 @@ CREATE TABLE `restaurants` (
 --
 
 INSERT INTO `restaurants` (`restaurant_id`, `restaurant_name`, `restaurant_rating`, `restaurant_address`, `restaurant_logo`, `restaurant_contact`, `restaurant_bg`) VALUES
-(1, 'EpicFC', 5, 'Jira', 'epicfc.jpg', NULL, 'EpicBackground.jpg'),
-(2, 'SAD Food Court', 1.5, 'White House, Vatara', 'sadfc.jpg', NULL, 'sadfc_bg.jpg'),
-(3, 'KFC', 4.5, 'Chefs Table', 'kfc.png', NULL, NULL),
-(4, 'Pizza Hut', 4.8, 'Wari', 'pizzahut.png', NULL, NULL);
+(1, 'EpicFC', 5, 'Jira', '../restaurants/epicfc.jpg', '+880123456789', '../restaurants/EpicBackground.jpg'),
+(2, 'SAD Food Court', 1.5, 'White House, Vatara', '../restaurants/sadfc.jpg', '+880123456789', '../restaurants/sadfc_bg.jpg'),
+(3, 'KFC', 4.5, 'Chefs Table', '../restaurants/kfc.png', '+880123456789', NULL),
+(4, 'Pizza Hut', 4.8, 'Wari', '../restaurants/pizzahut.png', '+880123456789', NULL),
+(5, 'KakoliCafe', 0, 'Dame kom Ave, R Plaza', 'https://i1.wp.com/brunchvirals.com/wp-content/uploads/2021/05/Kakoli-Furniture-Meme.png?w=1300&ssl=1', '+880123456789', NULL),
+(6, 'Abir Corner', 0, 'Lalmatia, Malibag', 'https://esmart.com.bd/wp-content/uploads/2018/10/restaurant-interior-design-for-free-software-restaurants.jpg', '+88015266369', NULL),
+(10, 'bfc', 0, 'Dhaka', 'https://media-eng.dhakatribune.com/uploads/2015/10/M-1.jpg', '+88012155154554', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,7 +154,8 @@ INSERT INTO `usertable` (`user_id`, `username`, `user_email`, `user_phone`, `use
 -- Indexes for table `items`
 --
 ALTER TABLE `items`
-  ADD PRIMARY KEY (`item_id`);
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `ifk` (`restaurant_id`);
 
 --
 -- Indexes for table `orders`
@@ -186,7 +192,7 @@ ALTER TABLE `usertable`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -204,7 +210,7 @@ ALTER TABLE `promotional`
 -- AUTO_INCREMENT for table `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `restaurant_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `restaurant_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `usertable`
@@ -215,6 +221,12 @@ ALTER TABLE `usertable`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `items`
+--
+ALTER TABLE `items`
+  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurants` (`restaurant_id`);
 
 --
 -- Constraints for table `promotional`

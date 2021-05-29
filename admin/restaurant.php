@@ -1,7 +1,7 @@
 <?php
 session_start();
     if(isset($_SESSION['username']) && isset($_SESSION['role']) && isset($_SESSION['user_id']) && !empty($_SESSION['username']) && !empty($_SESSION['role']) && !empty($_SESSION['user_id'])){
-        if($_SESSION['role']=='customer'){
+        if($_SESSION['role']=='admin'){
             
             
                 
@@ -30,7 +30,7 @@ session_start();
             <head>
                 <meta charset="UTF-8">
                 <title><?php echo $row['restaurant_name'] ?> | FoodHub</title>
-                <link href="<?php echo $row['restaurant_logo'] ?>" rel="icon"/>
+                <link href="../restaurants/<?php echo $row['restaurant_logo'] ?>" rel="icon"/>
 				<link rel="stylesheet" href="../css/style.css">
 				<style>
 					.bgimg{
@@ -56,7 +56,7 @@ session_start();
 			<div class="bgimg">
 			<center>
 				<h1 style="color: #ffffff; background-color: #00000060;"><?php echo $row['restaurant_name'] ?></h1>
-				<img src="<?php echo $row['restaurant_logo'] ?>" alt="<?php echo $row['restaurant_name'] ?>" height="100px" width="100px">
+				<img src="../restaurants/<?php echo $row['restaurant_logo'] ?>" alt="<?php echo $row['restaurant_name'] ?>" height="100px" width="100px">
 												<table style="color: #ffffff; background-color: #000000; font-size: 20px;">
 													<thead>
 														<tr>
@@ -125,7 +125,6 @@ session_start();
                             <th>Name</th>
                             <th>Price</th>
                             <th>Rating</th>
-                            <th>Order Quantity</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -149,7 +148,6 @@ session_start();
                                     <td><?php echo $row['item_name'] ?></td>
                                     <td><?php echo $row['item_price'] ?></td>
 									<td><?php echo $row['item_rating'] ?></a>
-									<td><input type="number" value="0"></a>
                                 </tr>
 
                                 <?php
@@ -177,11 +175,6 @@ session_start();
 						
                     </tbody>
                 </table>
-				<br>
-				<br>
-				
-				<a class="btn-grn" href="submitorder.php" style="width:100%;">Review Order</a>
-				
 				</center>
 				</div>
             </body>

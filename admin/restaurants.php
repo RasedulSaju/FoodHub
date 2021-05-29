@@ -1,14 +1,14 @@
 <?php
 session_start();
     if(isset($_SESSION['username']) && isset($_SESSION['role']) && isset($_SESSION['user_id']) && !empty($_SESSION['username']) && !empty($_SESSION['role']) && !empty($_SESSION['user_id'])){
-        if($_SESSION['role']=='customer'){
+        if($_SESSION['role']=='admin'){
         	$var1=$_SESSION['user_id'];
             ?>
 			<!DOCTYPE html>
 			<html lang="en">
 			<head>
 				<meta charset="UTF-8">
-				<title>Available Restaurants | FoodHub</title>
+				<title>All Restaurants | FoodHub</title>
 				<link rel="stylesheet" href="../css/style.css">
 			</head>
 			<body>
@@ -16,7 +16,7 @@ session_start();
 					include '../config.php';
 				?>
 				<center>
-				<h3>FoodHub - Available Restaurants</h3>
+				<h3>FoodHub - All Restaurants</h3>
 				<br>
 				<ul>
 					<li><a href="../login">Home</a></li>

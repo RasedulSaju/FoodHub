@@ -1,7 +1,7 @@
 <?php
 session_start();
     if(isset($_SESSION['username']) && isset($_SESSION['role']) && isset($_SESSION['user_id']) && !empty($_SESSION['username']) && !empty($_SESSION['role']) && !empty($_SESSION['user_id'])){
-        if($_SESSION['role']=='customer'){
+        if($_SESSION['role']=='admin'){
             ?>
             <!DOCTYPE html>
             <html lang="en">

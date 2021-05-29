@@ -47,3 +47,23 @@ li a:hover {
 .active {
   background-color: #4CAF50;
 }
+.btn-grn{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  
+  display: inline;
+  float: left;
+  border-right: 1px solid #bbb;
+  
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.btn-grn:hover {
+  background-color: #4CAF50;
+}
