@@ -14,6 +14,9 @@ CREATE TABLE items(
     item_name varchar(26) NOT NULL,
     item_price float(7) NOT NULL,
     item_rating float(3) DEFAULT '0.0'
+    restaurant_id int(11)
+
+    CONSTRAINT FOREIGN KEY ifk (restaurant_id) REFERENCES restaurants(restaurant_id)
 )
 
 
@@ -24,7 +27,10 @@ CREATE TABLE orders(
     order_placed datetime DEFAULT current_timestamp(),
     order_status varchar(10) DEFAULT 'pending',
     item_id int(11) NOT NULL,
-    restaurant_name varchar(26)
+    quantity int(100)
+
+    CONSTRAINT FOREIGN KEY oui (user_id) REFERENCES usertable(user_id),
+    CONSTRAINT FOREIGN KEY oii (item_id) REFERENCES items(item_id)
 )
 
 
