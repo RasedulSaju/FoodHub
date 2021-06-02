@@ -1,15 +1,23 @@
 th{
-	padding-bottom: 5px;
-	text-decoration: underline;
+  font-size: 20px;
+  font-family: "Segoe UI";
+  background-color: #31A57D;
+  color: white;
+ padding: 10px 0;
+ 
+  
 }
-tr{
-	border-bottom: 1px solid;
+thead{
+  margin-bottom: 20px;
 }
+
 table{
 	outline-style: solid;
 }
 td {
-	text-align: center;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 100px;
 }
 
 /* Menu */
@@ -47,17 +55,62 @@ li a:hover {
 .active {
   background-color: #4CAF50;
 }
+.dahsboard_heading{
+  display: flex;
+  height: 100px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color:#272E48;
+  color: white;
+
+}
+.table_design{
+  padding: 20px 20px;
+  color: #31A57D;
+  background-color:#272E48;
+  margin-right: 20%;
+  margin-left: 20%;
+  height: fit-content;
+}
+a{
+  color:#31A57D;
+}
+a:hover{
+  color:white
+}
+.dashboard_background{
+  display: flex;
+  padding-top: 10%;
+  width:100% ;
+  height: 100%; 
+  justify-content: center;
+}
+html{
+  height: 100vh;
+}
+body{
+  height: 80%;
+  background: #2E3841;
+}
+head{
+  height: 20%;
+}
+h1{color: white;}
+h3{
+  color: white;
+}
 .btn-grn{
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #31A57D;
   
   display: inline;
   float: left;
   border-right: 1px solid #bbb;
-  
+  width: 100px;
   display: block;
   color: white;
   text-align: center;
@@ -65,5 +118,21 @@ li a:hover {
   text-decoration: none;
 }
 .btn-grn:hover {
-  background-color: #4CAF50;
+  background-color: #FFFFFF;
+  color: #31A57D;
+}
+.search_baksho{
+  background-color:#272E48;
+  border: 2px solid;
+  border-color: #31A57D;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  height: 100px;
+}
+input[type="search"]::placeholder {
+  text-align: right;
 }

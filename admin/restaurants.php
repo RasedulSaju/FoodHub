@@ -8,15 +8,16 @@ session_start();
 			<html lang="en">
 			<head>
 				<meta charset="UTF-8">
-				<title>All Restaurants | FoodHub</title>
+				<title>Available Restaurants | FoodHub</title>
 				<link rel="stylesheet" href="../css/style.css">
 			</head>
 			<body>
 				<?php
 					include '../config.php';
 				?>
-				<center>
-				<h3>FoodHub - All Restaurants</h3>
+				<div class="dahsboard_heading">
+				    <h3>FoodHub - Available Restaurants</h3>
+                </div>
 				<br>
 				<ul>
 					<li><a href="../login">Home</a></li>
@@ -24,11 +25,10 @@ session_start();
 					<li><a class="active" href="restaurants">Restaurants</a></li>
 					<li style="float:right"><a href="../logout.php">Log Out</a></li>
 				</ul>
-				<br>
+                <div style="display: flex; flex-direction:column; align-items:center;">
 				<h1>Promotional</h1>
-				<br>
 				
-				 <table style="width:100%">
+				 <table style="width:100%" class="table_design">
                     <thead>
                         <tr>
                             <th>Logo</th>
@@ -88,15 +88,12 @@ session_start();
 						
                     </tbody>
                 </table>
-				<br/>
-				<hr/>
-				<hr/>
-				<br/>
 				<h1>All Restaurants</h1>
 				<!-- Search starts -->
-				<input type="search" id="searchbox">
-                <input type="button" value="Search" id="searchbtn">
-                <br>
+                <div class="search_baksho">
+				<input type="search" placeholder="Search for a restaurant..."  id="searchbox">
+                <input type="button" value="Search" id="searchbtn" class="btn-grn">
+                
                 <script>
                     var srcbtn=document.getElementById('searchbtn');
                     srcbtn.addEventListener('click', searchprocess);
@@ -108,9 +105,8 @@ session_start();
 
                 </script>
 				<!-- /. Search Ends -->
-				<br>
-				<br>
-				<table style="width:100%">
+				</div>
+				<table style="width:100%" class="table_design">
                     <thead>
                         <tr>
                             <th>Logo</th>
@@ -170,9 +166,7 @@ session_start();
 						
                     </tbody>
                 </table>
-				<br/>
-				<br/>
-				</center>
+                </div>
 				
 			</body>
 			</html>
