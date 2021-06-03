@@ -36,43 +36,64 @@
                     
 					if($usertype=='admin'){
                     ?>
-                        <script>window.location.assign('admin/');</script>
-                    <?php
+<script>
+    window.location.assign('admin/');
+
+</script>
+<?php
 					}
                     else if($usertype=='manager'){
                     ?>
-                        <script>window.location.assign('manager/');</script>
-                    <?php
+<script>
+    window.location.assign('manager/');
+
+</script>
+<?php
 					}
                     else if($usertype=='customer'){
                     ?>
-                        <script>window.location.assign('customer/');</script>
-                    <?php
+<script>
+    window.location.assign('customer/');
+
+</script>
+<?php
 					}
                 }
                 else{
                     ///invalid user
                     ?>
-                        <script>window.location.assign('login.php');</script>
-                    <?php
+<script>
+    window.location.assign('login.php');
+
+</script>
+<?php
                 }
             }
             catch(PDOException $ex){
                 ?>
-                    <script>window.location.assign('login.php');</script>
-                <?php
+<script>
+    window.location.assign('login.php');
+
+</script>
+<?php
             }
         }
         catch(PDOException $ex){
             ?>
-                <script>window.location.assign('login.php');</script>
-            <?php
+<script>
+    window.location.assign('login.php');
+
+</script>
+<?php
         }
         
     }
     else{
         ?>
-            <script>window.location.assign('login.php');</script>
-        <?php
+<script>
+    window.location.assign('login.php');
+
+</script>
+<?php
     }
 ?>

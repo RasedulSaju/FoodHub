@@ -1,10 +1,12 @@
             <!DOCTYPE html>
             <html lang="en">
+
             <head>
                 <meta charset="UTF-8">
                 <title>User List | Admin | FoodHub</title>
-                <link href="logo.jpg" rel="icon"/>
+                <link href="logo.jpg" rel="icon" />
             </head>
+
             <body>
                 <?php
                     include 'config.php';
@@ -18,12 +20,12 @@
                 <input type="button" value="Search" id="searchbtn">
                 <br>
                 <script>
-                    var srcbtn=document.getElementById('searchbtn');
+                    var srcbtn = document.getElementById('searchbtn');
                     srcbtn.addEventListener('click', searchprocess);
 
-                    function searchprocess(){
-                        var searchvalue=document.getElementById('searchbox').value;
-                        window.location.assign("searchpage.php?param1="+searchvalue);
+                    function searchprocess() {
+                        var searchvalue = document.getElementById('searchbox').value;
+                        window.location.assign("searchpage.php?param1=" + searchvalue);
                     }
 
                 </script>
@@ -40,7 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
+                        <?php
                         try{
                             $dbcon = new PDO("mysql:host=$dbserver:$dbport;dbname=$db;","$dbuser","$dbpass");
                             $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -56,39 +58,40 @@
 
                     ?>
 
-                                <tr>
-                                    <td><?php echo $row['user_id'] ?></td>
-                                    <td><?php echo $row['username'] ?></td>
-                                    <td><?php echo $row['user_email'] ?></td>
-                                    <td><?php echo $row['user_phone'] ?></td>
-                                    <td><?php echo $row['user_type'] ?></td>
-                                    <td><?php echo $row['user_address'] ?></td>
-                                    <td><a href="edituser.php?id=<?php echo $row['user_id'] ?>">Edit</a> | <a href="deleteuser.php?id=<?php echo $row['user_id'] ?>">Delete</a></td>
-                                </tr>
+                        <tr>
+                            <td><?php echo $row['user_id'] ?></td>
+                            <td><?php echo $row['username'] ?></td>
+                            <td><?php echo $row['user_email'] ?></td>
+                            <td><?php echo $row['user_phone'] ?></td>
+                            <td><?php echo $row['user_type'] ?></td>
+                            <td><?php echo $row['user_address'] ?></td>
+                            <td><a href="edituser.php?id=<?php echo $row['user_id'] ?>">Edit</a> | <a href="deleteuser.php?id=<?php echo $row['user_id'] ?>">Delete</a></td>
+                        </tr>
 
-                                <?php
+                        <?php
                                                                }
                             }
                             catch(PDOException $ex){
                                 ?>
 
-                                <tr>
-                                    <td colspan="6">Data read error ... ...</td>
-                                </tr>
-                                <?php
+                        <tr>
+                            <td colspan="6">Data read error ... ...</td>
+                        </tr>
+                        <?php
                             }               
                         }
 
                         catch(PDOException $ex){
 
                         ?>
-                                <tr>
-                                    <td colspan="6">Data read error ... ...</td>
-                                </tr>
+                        <tr>
+                            <td colspan="6">Data read error ... ...</td>
+                        </tr>
                         <?php
                         }
                         ?>
                     </tbody>
                 </table>
             </body>
+
             </html>
