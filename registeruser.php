@@ -113,29 +113,41 @@ use PHPMailer\PHPMailer\SMTP;
                 }
                 //. php Mailer Function Ends
                 ?>
-                   <!-- /. PHP Mail Ends -->
-                    <script>window.location.assign('users.php')</script>
-                <?php
+<!-- /. PHP Mail Ends -->
+<script>
+    window.location.assign('users.php')
+
+</script>
+<?php
             }
             catch(PDOException $ex){
                 /// if not successful, return back to add user page
                 ?>
-                    <script>window.location.assign('adduser.php')</script>
-                <?php
+<script>
+    window.location.assign('adduser.php')
+
+</script>
+<?php
             }
             
         }
         catch(PDOException $ex){
             ?>
-                <script>window.location.assign('adduser.php')</script>
-            <?php
+<script>
+    window.location.assign('adduser.php')
+
+</script>
+<?php
         }
     }
     else{
         ?>
-            <script>window.location.assign('adduser.php')</script>
-    
-        <?php
+<script>
+    window.location.assign('adduser.php')
+
+</script>
+
+<?php
         
     }
 ?>

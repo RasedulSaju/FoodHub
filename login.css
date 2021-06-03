@@ -1,9 +1,8 @@
-html{
+html,body {
     height: 100%;
-  }
-body{
-    height: 100%;
-    width:100%;
+}
+
+.login_page {
     background-image: url('./background.jpg');
     background-repeat: no-repeat;
     background-size: fill;
@@ -15,8 +14,8 @@ body{
     height: 100%;
 }
 
-.login{
-    background-color:#b7b7b7;
+.login {
+    background-color: #b7b7b7;
     display: flex;
     width: auto;
     flex-direction: column;

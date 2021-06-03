@@ -15,19 +15,18 @@ session_start();
 
 <body>
     <?php
-                    include '../config.php';
-                ?>
-    <center>
+        include '../config.php';
+    ?>
+    <div class="dahsboard_heading">
         <h3>FoodHub Add Item</h3>
-        <br>
-        <ul>
-            <li><a class="active" href="../login">Home</a></li>
-            <li><a href="history">History</a></li>
-            <li><a href="restaurants">Restaurants</a></li>
-            <li style="float:right"><a href="../logout.php">Log Out</a></li>
-        </ul>
-        <br>
-        <?php include '../config.php';
+    </div>
+    <ul>
+        <li><a class="active" href="../login">Home</a></li>
+        <li><a href="restaurants">Restaurants</a></li>
+        <li style="float:right"><a href="../logout.php">Log Out</a></li>
+    </ul>
+    <br>
+    <?php include '../config.php';
                         try{
                             $dbcon = new PDO("mysql:host=$dbserver:$dbport;dbname=$db;","$dbuser","$dbpass");
                             $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -39,25 +38,22 @@ session_start();
 
                                 $restauranttable=$returnval->fetchAll();
                                 ?>
-
-        <form action="insertitem.php" method="POST">
+    <div class="dashboard_background">
+        <form action="insertitem.php" method="POST" class="table_design" style="display: flex; flex-direction: column;">
             Item Name: <input type="text" name="iname"><br><br>
             Item Price: <input type="text" name="ipri"><br><br>
-            Restaurant Name: <select>
+            Restaurant Name: <select name="rid">
                 <?php
-
-                                foreach($restauranttable as $rstdata){
-                                    ?>
-
+					foreach($restauranttable as $rstdata){
+                ?>
                 <option value="<?php echo $rstdata['restaurant_id'] ?>"><?php echo $rstdata['restaurant_name'] ?></option>
                 <?php
-                                }
-                                            ?>
+                    }
+                ?>
             </select>
 
             <?php
-                                    }
-                            
+							}
                             catch(PDOException $ex){
                                 echo $ex;
                             }
@@ -69,10 +65,10 @@ session_start();
                 ?>
 
             <br><br>
-            <input type="submit" value="Add Item">
+            <input class="btn-grn" type="submit" value="Add Item">
         </form>
 
-    </center>
+    </div>
 
 </body>
 

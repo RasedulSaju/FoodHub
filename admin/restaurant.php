@@ -10,7 +10,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['role']) && isset($_SESSION[
             $id = $_GET['id'];
 ?>
 
-            <?php
+<?php
             try {
                 $dbcon = new PDO("mysql:host=$dbserver:$dbport;dbname=$db;", "$dbuser", "$dbpass");
                 $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -25,103 +25,102 @@ if (isset($_SESSION['username']) && isset($_SESSION['role']) && isset($_SESSION[
 
                     foreach ($productstable as $row) {
             ?>
-                        <!DOCTYPE html>
-                        <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-                        <head>
-                            <meta charset="UTF-8">
-                            <title><?php echo $row['restaurant_name'] ?> | FoodHub</title>
-                            <link href="<?php echo $row['restaurant_logo'] ?>" rel="icon" />
-                            <link rel="stylesheet" href="../css/style.css">
-                        </head>
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $row['restaurant_name'] ?> | FoodHub</title>
+    <link href="<?php echo $row['restaurant_logo'] ?>" rel="icon" />
+    <link rel="stylesheet" href="../css/style.css">
+</head>
 
-                        <body>
+<body>
 
-                            <ul>
-                                <li><a href="../login">Home</a></li>
-                                <li><a href="history">History</a></li>
-                                <li><a class="active" href="restaurants">Restaurants</a></li>
-                                <li style="float:right"><a href="../logout.php">Log Out</a></li>
-                            </ul>
+    <ul>
+        <li><a href="../login">Home</a></li>
+        <li><a class="active" href="restaurants">Restaurants</a></li>
+        <li style="float:right"><a href="../logout.php">Log Out</a></li>
+    </ul>
 
-                            <div class="dahsboard_heading">
-                                <h1><?php echo $row['restaurant_name'] ?></h1>
-                            </div>
-                            <div class="dashboard_background" style="flex-direction:column; align-items:center; justify-content:space-evenly; padding:0px;">
-                                <img src="<?php echo $row['restaurant_logo'] ?>" alt="<?php echo $row['restaurant_name'] ?>" height="100px" width="100px">
-                                <table class="table_design">
-                                    <thead>
-                                        <tr>
-                                            <th style="text-align: center; padding:4px 4px;">Rating</th>
-                                            <td> : </td>
-                                            <td style="text-align: left;"> <?php echo $row['restaurant_rating'] ?></td>
+    <div class="dahsboard_heading">
+        <h1><?php echo $row['restaurant_name'] ?></h1>
+    </div>
+    <div class="dashboard_background" style="flex-direction:column; align-items:center; justify-content:space-evenly; padding:0px;">
+        <img src="<?php echo $row['restaurant_logo'] ?>" alt="<?php echo $row['restaurant_name'] ?>" height="100px" width="100px">
+        <table class="table_design">
+            <thead>
+                <tr>
+                    <th style="text-align: center; padding:4px 4px;">Rating</th>
+                    <td> : </td>
+                    <td style="text-align: left;"> <?php echo $row['restaurant_rating'] ?></td>
 
-                                        </tr>
-                                        <tr>
+                </tr>
+                <tr>
 
-                                            <th style="text-align: center; padding: 4px 4px;">Address</th>
-                                            <td> : </td>
-                                            <td style="text-align: left;"> <?php echo $row['restaurant_address'] ?></td>
+                    <th style="text-align: center; padding: 4px 4px;">Address</th>
+                    <td> : </td>
+                    <td style="text-align: left;"> <?php echo $row['restaurant_address'] ?></td>
 
-                                        </tr>
-                                        <tr>
+                </tr>
+                <tr>
 
-                                            <th style="text-align: center; padding:4px 4px;">Contact</th>
-                                            <td> : </td>
-                                            <td style="text-align: left;"> <a href="tel:<?php echo $row['restaurant_contact'] ?>"><?php echo $row['restaurant_contact'] ?></a></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
+                    <th style="text-align: center; padding:4px 4px;">Contact</th>
+                    <td> : </td>
+                    <td style="text-align: left;"> <a href="tel:<?php echo $row['restaurant_contact'] ?>"><?php echo $row['restaurant_contact'] ?></a></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
 
-                                        </tr>
-                                    <?php
+                </tr>
+                <?php
                                 } ?>
 
-                                    </tbody>
-                                </table>
-                            <?php
+            </tbody>
+        </table>
+        <?php
                         } catch (PDOException $ex) {
                             ?>
-                                <tr>
-                                    <td colspan="5">Data read error ... ...</td>
-                                </tr>
-                            <?php
+        <tr>
+            <td colspan="5">Data read error ... ...</td>
+        </tr>
+        <?php
                         }
                     } catch (PDOException $ex) {
                             ?>
-                            <tr>
-                                <td colspan="5">Data read error ... ...</td>
-                            </tr>
-                        <?php
+        <tr>
+            <td colspan="5">Data read error ... ...</td>
+        </tr>
+        <?php
                     }
                         ?>
-                    <?php
+        <?php
                 } else {
                     ?>
-                        <script>
-                            window.location.assign('index.php');
-                        </script>
-                    <?php
+        <script>
+            window.location.assign('index.php');
+
+        </script>
+        <?php
                 }
                     ?>
-                    <br />
-                    <br />
-                    <div class="dahsboard_heading" style="width: 30%;">
-                        <h1 style="color: white">Menu</h1>
-                    </div>
-                    
-                    <table style="width:100%;" class="table_design">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Rating</th>
-                                <th>Order Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+        <br />
+        <br />
+        <div class="dahsboard_heading" style="width: 30%;">
+            <h1 style="color: white">Menu</h1>
+        </div>
+
+        <table style="width:100%;" class="table_design">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
                             try {
                                 $dbcon = new PDO("mysql:host=$dbserver:$dbport;dbname=$db;", "$dbuser", "$dbpass");
                                 $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -137,54 +136,54 @@ if (isset($_SESSION['username']) && isset($_SESSION['role']) && isset($_SESSION[
 
                             ?>
 
-                                        <tr>
-                                            <td><?php echo $row['item_name'] ?></td>
-                                            <td><?php echo $row['item_price'] ?></td>
-                                            <td><?php echo $row['item_rating'] ?></a>
-                                            <td><input type="number" value="0"></a>
-                                        </tr>
+                <tr>
+                    <td><?php echo $row['item_name'] ?></td>
+                    <td><?php echo $row['item_price'] ?></td>
+                    <td><?php echo $row['item_rating'] ?></a>
+                </tr>
 
-                                    <?php
+                <?php
                                     }
                                 } catch (PDOException $ex) {
                                     ?>
 
-                                    <tr>
-                                        <td colspan="3">Data read error ... ...</td>
-                                    </tr>
-                                <?php
+                <tr>
+                    <td colspan="3">Data read error ... ...</td>
+                </tr>
+                <?php
                                 }
                             } catch (PDOException $ex) {
 
                                 ?>
-                                <tr>
-                                    <td colspan="3">Data read error ... ...</td>
-                                </tr>
-                            <?php
+                <tr>
+                    <td colspan="3">Data read error ... ...</td>
+                </tr>
+                <?php
                             }
                             ?>
 
-                        </tbody>
-                    </table>
+            </tbody>
+        </table>
 
-                    <a class="btn-grn" href="submitorder.php">Review Order</a>
-                            </div>
-                        </body>
+    </div>
+</body>
 
-                        </html>
-                    <?php
+</html>
+<?php
                 } else {
                     ?>
-                        <script>
-                            window.location.assign('../login.php');
-                        </script>
-                    <?php
+<script>
+    window.location.assign('../login.php');
+
+</script>
+<?php
                 }
             } else {
                     ?>
-                    <script>
-                        window.location.assign('../login.php');
-                    </script>
-                <?php
+<script>
+    window.location.assign('../login.php');
+
+</script>
+<?php
             }
                 ?>

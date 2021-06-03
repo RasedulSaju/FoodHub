@@ -26,22 +26,34 @@ session_start();
                 catch(PDOException $ex){
                     /// if not successful, return back to add user page
                     ?>
-                        <script>window.location.assign('addrestaurant.php')</script>
-                    <?php
+<script>
+    window.location.assign('addrestaurant.php')
+
+</script>
+<?php
                 }
             ?>
-                        <script>window.location.assign('restaurants.php')</script>
-                    <?php
+<script>
+    window.location.assign('restaurants.php')
+
+</script>
+<?php
         }
         catch(PDOException $ex){
             ?>
-                <script>window.location.assign('addrestaurant.php')</script>
-            <?php
+<script>
+    window.location.assign('addrestaurant.php')
+
+</script>
+<?php
         }
     }
     else{
         ?>
-            <script>window.location.assign('addrestaurant.php')</script>
-        <?php
+<script>
+    window.location.assign('addrestaurant.php')
+
+</script>
+<?php
     }
 ?>
